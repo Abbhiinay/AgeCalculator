@@ -1,67 +1,72 @@
 const birthInput = document.getElementById("birthdate");
 const currentInput = document.getElementById("currentdate");
 const calcBtn = document.getElementById("calculate-btn");
+const values = document.querySelectorAll(".value");
 
-// result divs
-const yearsDiv = document.querySelector(".years");
-const monthsDiv = document.querySelector(".months");
-const weeksDiv = document.querySelector(".weeks");
-const daysDiv = document.querySelector(".days");
-const hoursDiv = document.querySelector(".hours");
-const minutesDiv = document.querySelector(".minutes");
-const secondsDiv = document.querySelector(".seconds");
+// default current date
+currentInput.valueAsDate = new Date();
 
 calcBtn.addEventListener("click", calculateAge);
 
-function calculateAge() {
-  if (!birthInput.value || !currentInput.value) {
-    alert("Please select both dates");
-    return;
+function animateValue(el, end) {
+  let start = 0;
+  const duration = 500;
+  const startTime = performance.now();
+
+  function update(time) {
+    const progress = Math.min((time - startTime) / duration, 1);
+    el.textContent = Math.floor(progress * end);
+    if (progress < 1) requestAnimationFrame(update);
   }
+  requestAnimationFrame(update);
+}
+
+function calculateAge() {
+  if (!birthInput.value || !currentInput.value) return;
 
   const birthDate = new Date(birthInput.value);
   const currentDate = new Date(currentInput.value);
 
   if (birthDate > currentDate) {
-    alert("Birthdate cannot be after the current date");
+    alert("Birthdate cannot be after current date");
     return;
   }
 
-  // ---- Years & Months Calculation ----
   let years = currentDate.getFullYear() - birthDate.getFullYear();
   let months = currentDate.getMonth() - birthDate.getMonth();
   let days = currentDate.getDate() - birthDate.getDate();
 
   if (days < 0) {
     months--;
-    const prevMonth = new Date(
-      currentDate.getFullYear(),
-      currentDate.getMonth(),
-      0
-    ).getDate();
-    days += prevMonth;
+    days += new Date(currentDate.getFullYear(), currentDate.getMonth(), 0).getDate();
   }
-
   if (months < 0) {
     years--;
     months += 12;
   }
 
-  // ---- Total Time Calculations ----
   const diffMs = currentDate - birthDate;
-
   const totalSeconds = Math.floor(diffMs / 1000);
   const totalMinutes = Math.floor(totalSeconds / 60);
   const totalHours = Math.floor(totalMinutes / 60);
   const totalDays = Math.floor(totalHours / 24);
   const totalWeeks = Math.floor(totalDays / 7);
 
-  // ---- Display Results ----
-  yearsDiv.innerHTML = `<b>Years:</b> ${years}`;
-  monthsDiv.innerHTML = `<b>Months:</b> ${months}`;
-  weeksDiv.innerHTML = `<b>Weeks:</b> ${totalWeeks}`;
-  daysDiv.innerHTML = `<b>Days:</b> ${totalDays}`;
-  hoursDiv.innerHTML = `<b>Hours:</b> ${totalHours}`;
-  minutesDiv.innerHTML = `<b>Minutes:</b> ${totalMinutes}`;
-  secondsDiv.innerHTML = `<b>Seconds:</b> ${totalSeconds}`;
+  const results = [
+    years,
+    months,
+    totalWeeks,
+    totalDays,
+    totalHours,
+    totalMinutes,
+    totalSeconds
+  ];
+
+  values.forEach((el, i) => animateValue(el, results[i]));
+}
+
+function toggleDarkMode() {
+  document.body.classList.toggle("dark");
+  const ageColor = document.getElementById("age-color");
+  document.body.classList.contains("dark") ? ageColor.src = "age-color.png" : ageColor.src = "age-range.png";
 }

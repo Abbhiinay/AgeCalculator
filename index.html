@@ -1,38 +1,56 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>AgeCalculator</title>
-  </head>
-  <body>
-    <div class="title">
-      <h1>Age Calculator</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Age Calculator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="title">
+    <div class="logo"> 
+        <h1>Age Calculator</h1>
+        <img src="clock.png" alt="Clock Icon" id="clock" />
     </div>
-    <br />
-    <div class="container">
-      <div class="inner">
-        <div class="input-container-left">
-          <label for="birthdate" id="birthdateTitle">Enter your birthdate:</label>
-          <input type="date" id="birthdate" name="birthdate" />
-        </div>
-        <div class="input-container-right">
-          <label for="currentdate" id="currdateTitle">Age at Date of:</label>
-          <input type="date" id="currentdate" name="currentdate" />
-        </div>
+   <button class="dark-toggle" onclick="toggleDarkMode()">🌙</button>
+  </div>
+
+  <div class="container">
+    
+    <div id="para1">
+        <img src="age-range.png" alt="Age Icon" id="age-icon" />
+        <img src="age-color.png" alt="Age Color" id="age-color" style="display:none;" />
+        <p >Calculate your age in years, months, weeks, days, hours, minutes and seconds.</p><br><br>
+    </div>
+    <div class="inner">
+      <div class="input-box">
+        <label>Enter your birthdate</label>
+        <input type="date" id="birthdate" />
       </div>
-      <div class="calBtn"><button id="calculate-btn">Calculate Age</button></div>
-      <div class="result">
-        <div class="years"></div>
-        <div class="months"></div>
-        <div class="weeks"></div>
-        <div class="days"></div>
-        <div class="hours"></div>
-        <div class="minutes"></div>
-        <div class="seconds"></div>
+
+      <div class="input-box">
+        <label>Age at date of</label>
+        <input type="date" id="currentdate" />
       </div>
     </div>
-    <script src="script.js"></script>
-  </body>
+
+    <div class="calBtn">
+      <button id="calculate-btn">Calculate Age</button>
+    </div>
+
+    <div class="result">
+      <div class="card"><span class="label">Years</span><span class="value">--</span></div>
+      <div class="card"><span class="label">Months</span><span class="value">--</span></div>
+      <div class="card"><span class="label">Weeks</span><span class="value">--</span></div>
+      <div class="card"><span class="label">Days</span><span class="value">--</span></div>
+      <div class="card"><span class="label">Hours</span><span class="value">--</span></div>
+      <div class="card"><span class="label">Minutes</span><span class="value">--</span></div>
+      <div class="card"><span class="label">Seconds</span><span class="value">--</span></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
+
