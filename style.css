@@ -1,9 +1,10 @@
 :root {
   --bg: #e7e8eaf3;
-  --card-bg: #c2c2c2;
+  --card-bg: #c0c0c0;
   --text: #222;
   --label: #3b3b3b;
-  --accent: #5c6cff;
+  --accent: #581908;
+  --history-bg: #E2AEDD;
 }
 
 body.dark {
@@ -12,6 +13,7 @@ body.dark {
   --text: #f5f5f5;
   --label: #d1d1d1;
   --accent: #8f9bff;
+    --history-bg: #707070;
 }
 
 body {
@@ -122,6 +124,27 @@ button:hover {
   opacity: 0;
   animation: fadeUp 0.5s ease forwards;
 }
+.card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.card:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.card:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.card:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.card:nth-child(6) {
+  animation-delay: 0.6s;
+}
+.card:nth-child(7) {
+  animation-delay: 0.7s;
+}
 .card:hover {
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.236);
 }
@@ -136,6 +159,38 @@ button:hover {
   font-size: 22px;
   font-weight: bold;
   margin-top: 5px;
+}
+.history {
+  margin-top: 40px;
+  background-color: var(--history-bg);
+  padding: 20px;
+  border-radius: 12px;
+  opacity: 0;
+}
+
+.history h2 {
+  margin-bottom: 10px;
+}
+
+.history ul {
+  padding-left: 18px;
+}
+
+.history li {
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.history li span {
+  color: var(--accent);
+  font-weight: bold;
+}
+.history{
+  animation: fadeUp 0.5s ease forwards;
+  animation-delay: 0.9s;
+}
+.history li {
+  animation: fadeUp 0.5s ease forwards;
+  animation-delay: 0.4s;
 }
 
 @keyframes fadeUp {

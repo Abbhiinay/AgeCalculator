@@ -67,6 +67,67 @@ function calculateAge() {
 
 function toggleDarkMode() {
   document.body.classList.toggle("dark");
-  const ageColor = document.getElementById("age-color");
+  const ageColor = document.getElementById("age-icon");
   document.body.classList.contains("dark") ? ageColor.src = "age-color.png" : ageColor.src = "age-range.png";
 }
+
+async function fetchIndianHistory(date) {
+  const d = new Date(date);
+  const month = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+
+  const url = `https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/${month}/${day}`;
+
+  const list = document.getElementById("history-list");
+  list.innerHTML = "<li>Loading Indian historical data...</li>";
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    list.innerHTML = "";
+
+    const isIndian = (text = "") =>
+      /india|indian|bharatiya/i.test(text);
+
+    // 🇮🇳 EVENTS IN INDIA
+    data.events.forEach(ev => {
+      if (isIndian(ev.text)) {
+        const li = document.createElement("li");
+        li.textContent = `🇮🇳 ${ev.year}: ${ev.text}`;
+        list.appendChild(li);
+      }
+    });
+
+    // 🎂 INDIAN BIRTHDAYS
+    data.births.forEach(b => {
+      if (isIndian(b.text)) {
+        const li = document.createElement("li");
+        li.textContent = `🎂 ${b.year}: ${b.text}`;
+        list.appendChild(li);
+      }
+    });
+
+    // 🕊️ INDIAN DEATH ANNIVERSARIES
+    data.deaths.forEach(d => {
+      if (isIndian(d.text)) {
+        const li = document.createElement("li");
+        li.textContent = `🕊️ ${d.year}: ${d.text}`;
+        list.appendChild(li);
+      }
+    });
+
+    if (!list.hasChildNodes()) {
+      list.innerHTML = "<li>No notable Indian records found for this date.</li>";
+    }
+
+  } catch (err) {
+    list.innerHTML = "<li>Failed to load Indian historical data.</li>";
+  }
+}
+
+
+birthInput.addEventListener("change", () => fetchIndianHistory(birthInput.value));
+currentInput.addEventListener("change", () => fetchIndianHistory(currentInput.value));
+
+// Initial fetch for default current date
+fetchIndianHistory(currentInput.value);
