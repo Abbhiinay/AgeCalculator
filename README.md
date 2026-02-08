@@ -1,4 +1,5 @@
-# 🧮 Age Calculator + 🇮🇳 Indian History on This Day
+# 🧮 Age Calculator  
+### Includes "In Indian History on This Day"
 
 A modern **Age Calculator web application** that calculates your exact age (years → seconds) and also shows **important Indian historical events, Indian celebrity birthdays, and death anniversaries** for the selected date.
 
@@ -64,18 +65,19 @@ Each event/birth/death entry contains descriptive text, for example:
 - `Indian freedom fighter`
 - `Event in India`
 
-The app keeps entries where the description contains keywords like:
-India
-Indian
-Bharatiya
+The app keeps entries where the description contains keywords like:  
+
+India  
+Indian  
+Bharatiya  
+
+**Note**: Since this filtering is text-based, a small margin of false positives or missed entries may exist.  
 
 ### 🛠️ Tech Stack
 
-HTML5
+HTML5  
 CSS3 (CSS Variables, Animations)  
-
 JavaScript (ES6)  
-
 Wikipedia Public API
 
 ### 📌 Future Improvements
