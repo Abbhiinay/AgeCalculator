@@ -1,0 +1,76 @@
+.title{
+    text-align: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 24px;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    padding:10px;
+
+}
+.inner{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.input-container-left, .input-container-right{
+    width:300px;
+    border: 2px solid black ;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: auto;    
+}
+#birthdateTitle, #currdateTitle{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+}
+#calculate-btn{
+    padding: 15px;
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    cursor: pointer;
+    position: relative;
+    background-color: rgb(44, 170, 44);
+    color:black;
+    font-weight: 500;
+    border-radius: 10px;
+    border: none;
+}
+.calBtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+#calculate-btn:hover{
+    background-color: rgba(21, 130, 21, 0.864);
+}
+.result{
+    display:grid;
+    grid-template-columns: auto auto auto;
+    gap: 20px;
+    margin-top: 3em;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+.result div{
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    font-size: 1.3rem;
+    border-left: 5px solid rgb(3, 114, 34);
+    justify-content: space-between;
+    width:200px;
+    height:25px;
+}
