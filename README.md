@@ -56,7 +56,7 @@ https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/MM/DD
 ## 🧠 Indian-Only Filtering Logic (Important)
 
 Wikipedia does **not** provide a country-specific endpoint.  
-To show **only Indian-related information**, this project applies **client-side filtering**.
+To show **only Indian-related information**, this project applies **client-side filtering**
 
 ### 🔍 How filtering works
 
